@@ -21,10 +21,10 @@ function addBelow(){
 	
 	var newBlock = document.createElement("P");
 	
-	alert(newDivID)
+	/* alert(newDivID) */
 	
 	newBlock.id = newDivID;
-	newBlock.innerHTML = "new text box <br> <button  onclick='addBelow()'> Add more text </button><button  onclick='removeText()'> Remove text </button> "
+	newBlock.innerHTML = "new text box <br> <button  onclick='addBelow()'> Add more text </button><button  onclick='removeText()'> Remove text </button> ";
 	
 	document.getElementById(oldID).appendChild(newBlock);
 	
@@ -34,17 +34,17 @@ function addBelow(){
 
 function removeText(){
 	var currDivID = "textbox";
+	var TBminus = numTB - 1;
+	var prevDivID = currDivID.concat(TBminus);
+	currDivID = currDivID.concat(numTB);
 	
 	if(numTB > 1){ /* elements to delete */
-		prevDivID = currDivID.concat(numTB-1);
-		curDivID = currDivID.concat(numTB);
-
-
-
-		document.getElementById(currDivID).removeChild();
+		var child = document.getElementById(currDivID); 
+		document.getElementById(prevDivID).removeChild(child);
+		numTB = numTB - 1;
 	}
 	else{ /* only one element, clear itself */ 
-		
+		document.getElementById(currDivID).innerHTML = "new text box <br> <button  onclick='addBelow()'> Add more text </button><button  onclick='removeText()'> Remove text </button> ";
 	}
 }
 
